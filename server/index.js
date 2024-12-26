@@ -27,3 +27,10 @@ app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
 
+
+const PORT = process.env.PORT || 9000;
+
+mongoose.connect(process.env.MONGODB_URL).then(() => {
+    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
+}).catch((error)=> console.log(`${error} did not connect`))
+
